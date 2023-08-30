@@ -44,6 +44,7 @@ routes.patch('/products/:id',bodyParser.json(),(req,res)=>{
 routes.delete('/products/:id',bodyParser.json(),(req,res)=>{
     products.deleteProducts(req,res)
 })
+
 module.exports = {
     express,
     routes,
