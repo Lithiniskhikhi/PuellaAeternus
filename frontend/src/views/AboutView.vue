@@ -52,8 +52,9 @@
           <!-- <button type="button" id="About-btn">View Collection
             <span><a href="tel:067 201 8653" title="Give me a call" ><ion-icon name="call-outline" style="color:rgb(213, 122, 174);" ></ion-icon></a ></span>
            </button>  -->
-           <button type="submit" class="btn " style="background-color: rgb(37, 37, 139); color: white">View collection</button>
-
+           <a href="./Products">
+            <button type="button" class="btn" style="background-color: rgb(37, 37, 139); color: white">View collection</button>
+          </a>
         </div>
       </div>
   </div>
