@@ -35,7 +35,8 @@ class Products{
             if(err) throw err
             res.json({
                 status: res.statusCode,
-                results
+                results,
+                msg: 'Product deleted'
             })
         })
     }

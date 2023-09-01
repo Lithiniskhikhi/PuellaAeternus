@@ -29,14 +29,11 @@ routes.post('/login',bodyParser.json(),(req,res)=>{
 routes.get('/products',(req,res)=>{
     products.fetchProducts(req,res)
 })
-routes.get('/products/:id',(req,res)=>{
+routes.get('/product/:id',(req,res)=>{
     products.fetchProduct(req,res)
 })
 routes.post('/product',bodyParser.json(),(req,res)=>{
     products.addProduct(req,res)
-})
-routes.put('/products/:id',bodyParser.json(),(req,res)=>{
-    products.updateProducts(req,res)
 })
 routes.patch('/products/:id',bodyParser.json(),(req,res)=>{
     products.updateProducts(req,res)
