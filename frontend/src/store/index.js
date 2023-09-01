@@ -1,6 +1,7 @@
 import { createStore } from 'vuex'
 import axios from 'axios'
-const MoviesUrl= "https://capstone-26ks.onrender.com"
+const artUrl= "https://capstone-26ks.onrender.com/"
+
 export default createStore({
   state: {
     users: null,
@@ -56,7 +57,7 @@ export default createStore({
   actions: {
     async fetchUsers(context) {
       try{
-        const {data} = await axios.get(`${MoviesUrl}users`)
+        const {data} = await axios.get(`${artUrl}users`)
         context.commit("setUsers", data.results)
       }catch(e){
         context.commit("setMsg", "An error occurred")
@@ -64,7 +65,7 @@ export default createStore({
     },
     async fetchProducts(context) {
       try{
-        const {data} = await axios.get(`${MoviesUrl}products`)
+        const {data} = await axios.get(`${artUrl}products`)
         context.commit("setProducts", data.results)
         console.log(data.results);
       }catch(e){
@@ -73,7 +74,7 @@ export default createStore({
     },
     async DeleteProducts(context, prodID ) {
       try{
-        const response = await axios.delete(`${MoviesUrl}product/${prodID}`)
+        const response = await axios.delete(`${artUrl}product/${prodID}`)
         context.commit("setDeleteProducts", response)
         location.reload()
       }catch(e){
@@ -82,7 +83,7 @@ export default createStore({
     },
     async DeleteUsers(context, userID ) {
       try{
-        const response = await axios.delete(`${MoviesUrl}users/${userID}`)
+        const response = await axios.delete(`${artUrl}users/${userID}`)
         context.commit("setDeleteUsers", response)
         location.reload()
       }catch(e){
@@ -90,13 +91,13 @@ export default createStore({
       }
     },
     async addProduct({ commit }, productData) {
-      const response = await axios.post(`${MoviesUrl}products`, productData)
+      const response = await axios.post(`${artUrl}products`, productData)
       location.reload()
       commit('setAddProduct', response.data)
     },
     async addUser({ commit }, userData) {
       try {
-        const response = await axios.post(`${MoviesUrl}users`, userData)
+        const response = await axios.post(`${artUrl}users`, userData)
         commit('setAddUser', response.data)
         location.reload()
         console.log('testing');
