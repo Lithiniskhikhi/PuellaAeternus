@@ -35,10 +35,6 @@
   
   
   export default {
-  created() {
-    this.$store.dispatch("fetchProduct", this.prodID);
-  },
-
   computed: {
     product() {
       return this.$store.state.product;
