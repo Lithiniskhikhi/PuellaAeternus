@@ -74,7 +74,7 @@ export default createStore({
     },
     async fetchProduct(context, prodID) {
       try{
-        const {data} = await axios.get(`${artUrl}products/${prodID}`)
+        const {data} = await axios.get(`${artUrl}product/${prodID}`)
         context.commit("setProduct", data.results)
         console.log(data.results);
       }catch(e){

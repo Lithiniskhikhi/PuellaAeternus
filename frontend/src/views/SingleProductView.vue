@@ -2,9 +2,9 @@
     <div>
         <br>
         <br>
-        <div v-if="product">
+        <div>
             <body>
-                <div class="container">
+                <div class="container" v-if="product">
                   <div class="left-side">
                     <img :src="product.prodUrl" class="left-side" alt=""  />
                   </div>
@@ -22,10 +22,10 @@
                     </button>          
                   </div>
                 </div>
+                <div v-else>
+                    <h1>Loading...</h1>
+                </div>
             </body>
-        </div>
-        <div v-else>
-            <h1>Loading...</h1>
         </div>
         
     </div>
@@ -35,7 +35,6 @@
   
   
   export default {
-  props: ["prodID"],
   created() {
     this.$store.dispatch("fetchProduct", this.prodID);
   },
