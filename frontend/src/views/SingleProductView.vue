@@ -40,17 +40,10 @@
       return this.$store.state.product;
     },
   },
-  created(){
-    const prodID = this.$route.params.prodID
-    this.fetchProduct(prodID)
-  },
   mounted(){
-    this.fetchProduct()
-  },
-  methods:{
-    fetchProduct(prodID){
-        this.$store.dispatch('fetchProduct', prodID)
-    }
+      
+    this.$store.dispatch('fetchProduct', this.$route.params.prodID)
+
   },
   components:{
    

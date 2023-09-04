@@ -60,8 +60,7 @@
                   <p class="card-text">R {{ product.amount }}</p>
                   <p class="card-text">Qty: {{ product.quantity }}</p>
                   <router-link
-                    :to="
-                      '/product/' + product.prodID"
+                    :to="{name: 'product', params:{prodID: product.prodID}}"
                     ><button class="btn btn-outline-light" style="background-color:black">
                       View More
                     </button></router-link
@@ -84,9 +83,6 @@ export default {
             products(){
                 return this.$store.state.products
             },
-            product(){
-              return this.$store.state.product
-            }
         },
         mounted() {
             this.$store.dispatch('fetchProducts')
