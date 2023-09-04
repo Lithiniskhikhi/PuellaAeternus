@@ -2,8 +2,9 @@
     <div class="about">
       <Navbar/>
       <br>
-  <h2>Admin</h2>
-  <button class="addbtn"><AddProduct/>Add</button>
+      <br>
+  <h1>ADMIN</h1>
+  <br>
       <div class="table-responsive" style="margin-top: 1rem">
         <table class="table">
           <thead>
@@ -38,8 +39,9 @@
           </tbody>
         </table>
       </div>  
-  
-      <h2>User</h2>
+  <br>
+  <br>
+      <h1>USERS</h1>
       <button class="addbtn"><AddUser/> </button>
   
       <div class="table-responsive" style="margin-top: 1rem" v-if="products">
@@ -121,5 +123,16 @@
      }
   };
   </script>
+  <style scoped>
+  @import url('https://fonts.googleapis.com/css2?family=Castoro+Titling&family=Phudu:wght@300&family=Vina+Sans&display=swap');
+
+  h1{
+    margin: 0;
+    margin-left: 20px ;
+    font-family: 'Phudu', cursive;
+  color: #000;
+  }
+  
+  </style>
   
   
