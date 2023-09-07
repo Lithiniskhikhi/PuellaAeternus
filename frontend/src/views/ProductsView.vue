@@ -54,6 +54,8 @@
                   <br />
                   <h5 class="card-title" >
                     {{ product.prodName }}
+                    <br>
+                    <br>
                   </h5>
                   <h5 class="card-title">{{ product.Category }}</h5>
                   <br />
@@ -120,6 +122,7 @@ h1{
     justify-content: center;
     align-items: center;
 }
-  
+ 
+
   
 </style>
