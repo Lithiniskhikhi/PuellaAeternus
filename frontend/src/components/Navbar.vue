@@ -1,7 +1,7 @@
 <template>
-    <div>
-        <div class="container-fluid" position-fixed>
-            <nav class="navbar navbar-expand-lg  bg-white ">
+    <div class="">
+        <div class="container-fluid "  >
+            <nav class="navbar navbar-expand-lg  bg-white  ">
                 <img src="https://i.postimg.cc/prJ28wMQ/Screenshot-2023-08-30-153457.png" style="width: 3.5rem; margin-right: 15rem">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -32,10 +32,15 @@
           <li class="nav-item" style="margin-right:10rem">
             <router-link class="nav-link" to="/contact" style="color:#000">CONTACT</router-link>
           </li>
+         
+          <li class="nav-item">
+            <router-link class="nav-link" to="/login" style="color:#000">login</router-link>
+          </li>
           <i class="bi bi-bag" style="margin-right:2rem"></i>
           <form class="d-flex" role="search">
-            <i class="bi bi-search"   style="margin-right:2rem"></i>
-            <i class="bi bi-heart"></i>
+            <!-- <i class="bi bi-search"   style="margin-right:2rem"></i> -->
+            <i class="bi bi-heart" style="margin-right:2rem"></i>
+            <i class="bi bi-person"></i>
         </form>
          
         </ul>
@@ -53,6 +58,9 @@
 </script>
 
 <style scoped>
+.bi {
+    font-size: 2rem;
+  }
 .nav-link{
     font-family: Poppins,sans-serif
   }
@@ -75,4 +83,51 @@
   }
 
   
+
+  a {
+    background-image: linear-gradient(
+      to right,
+      #54b3d6,
+      #54b3d6 50%,
+      #000 50%
+    );
+    background-size: 200% 100%;
+    background-position: -100%;
+    display: inline-block;
+    padding: 5px 0;
+    position: relative;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  a:before{
+    content: '';
+    background: #54b3d6;
+    display: block;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  a:hover {
+   background-position: 0;
+  }
+  
+  a:hover::before{
+    width: 100%;
+  }
+  
+  /* Presentational Styles */
+  body {
+      display: grid;
+    font-family: 'Poppins', sans-serif;
+    font-size: 27px;
+    font-weight: 700;
+    height: 100vh;
+      place-items: center;
+  }
 </style>

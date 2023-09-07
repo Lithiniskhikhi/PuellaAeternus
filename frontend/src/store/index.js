@@ -1,6 +1,12 @@
 import { createStore } from 'vuex'
 import axios from 'axios'
+import sweet from 'sweetalert'
+import router from '@/router'
+import {useCookies} from 'vue3-cookies'
+const {cookies}= useCookies()
 const artUrl= "https://capstone-26ks.onrender.com/"
+// import authenticateuser = '@/services/authenticate'
+
 
 export default createStore({
   state: {
@@ -113,8 +119,73 @@ export default createStore({
       } catch (error) {
         console.log(error);
       }
-    }
+    },
+    async register(context, payload) {
+      try {
+        const { msg } = (await axios.post(`${url}users`, payload)).data;
+        if (msg) {
+          sweet({
+            title: "Registration",
+            text: msg,
+            icon: "success",
+            timer: 4000,
+          });
+          context.dispatch("fetchUsers");
+          router.push({ name: "login" });
+        } else {
+          sweet({
+            title: "Error",
+            text: msg,
+            icon: "error",
+            timer: 4000
+          });
+        }
+      } catch (e) {
+        context.commit("setMsg", "An error has occured");
+      }
+    },
+    //login
+    async login(context, payload) {
+      try {
+        const { msg, token, results } = (
+          await axios.post(`${url}login`, payload)
+        ).data;
+        if (results) {
+          context.commit("setUser", { results, msg });
+          cookies.set("MannUser", { msg, token, results });
+          authenticateUser.applyToken(token);
+          sweet({
+            title: msg,
+            text: `Welcome back ${results?.firstName} ${results?.lastName}`,
+            icon: "success",
+            timer: 4000,
+          });
+          router.push({ name: "home" });
+        } else {
+          sweet({
+            title: "Error",
+            text: msg,
+            icon: "error",
+            timer: 4000,
+          });
+        }
+      } catch (e) {
+        context.commit("setMsg", "An error has occured");
+      }
+    },
+
+
   },
   modules: {
   }
 })
+window.addEventListener("scroll", function() {
+  //Select your navigation bar
+  var nav = document.getElementsByTagName("nav")[0];
+  //Change 20 to anything you want like nav.offsetHeight
+  if(window.scrollY > 20) {
+      nav.style.borderBottom = "5px solid dodgerblue";
+   } else {
+     nav.style.border = "0";
+  }
+});
