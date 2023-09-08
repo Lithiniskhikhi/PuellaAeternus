@@ -1,6 +1,7 @@
 <template>
     <div>
-        
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add</button>
+       
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -10,14 +11,14 @@
       </div>
       <div class="modal-body">
         <form @submit.prevent="addFormUser" class="d-flex flex-column gap-5">
-            <!-- <input type="text" v-model="userData.userID" placeholder="id" name="" id=""> -->
+            <input type="text" v-model="userData.userID" placeholder="id" name="" id="">
             <input type="text" v-model="userData.firstName" placeholder="name" name="" id="">
             <input type="text" v-model="userData.lastName" placeholder="surname" name="" id="">
             <input type="text" v-model="userData.userAge" placeholder="age" name="" id="">
             <input type="text" v-model="userData.userRole" placeholder="role" name="" id="">
             <input type="text" v-model="userData.emailAdd" placeholder="email" name="" id="">
             <input type="text" v-model="userData.userPass" placeholder="password" name="" id="">
-            <input type="text" v-model="userData.userProfile" placeholder="image" name="" id="">
+            <input type="text" v-model="userData.profileLUrl" placeholder="image" name="" id="">
             <button type="submit" class="btn">Add</button>
            </form>
       </div>
@@ -35,14 +36,15 @@
         data(){
             return{
                 userData:{
+                userID:"",
                 firstName: "",
                 lastName : "",
                 userAge: "",
-                Gender: "",
+                gender: "",
                 userRole: "",
                 emailAdd: "",
                 userPass: "", 
-                userProfile:""
+                profileLUrl:""
 
             }
     }

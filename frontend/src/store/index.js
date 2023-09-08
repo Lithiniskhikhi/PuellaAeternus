@@ -5,7 +5,7 @@ import router from '@/router'
 import {useCookies} from 'vue3-cookies'
 const {cookies}= useCookies()
 const artUrl= "https://capstone-26ks.onrender.com/"
-// import authenticateuser = '@/services/authenticate'
+import AuthenticateUser  from '@/services/AuthenticateUser'
 
 
 export default createStore({
@@ -18,7 +18,10 @@ export default createStore({
     token: null,
     msg: null,
     addProduct:null,
-    addUser:null
+    addUser:null,
+    editProduct:null,
+    editUsers:null,
+
 
   },
   getters: {
@@ -56,7 +59,14 @@ export default createStore({
     },
     setAddUser(state,data){
       state.addUser = data
+    },
+    editProduct(state, data){
+      state.editProduct= data
+    },
+    editUsers(state, data){
+      state.editUsers= data
     }
+
 
 
   },
@@ -89,7 +99,7 @@ export default createStore({
     },
     async DeleteProducts(context, prodID ) {
       try{
-        const response = await axios.delete(`${artUrl}product/${prodID}`)
+        const response = await axios.delete(`${artUrl}products/${prodID}`)
         context.commit("setDeleteProducts", response)
         location.reload()
       }catch(e){
@@ -98,18 +108,75 @@ export default createStore({
     },
     async DeleteUsers(context, userID ) {
       try{
-        const response = await axios.delete(`${artUrl}users/${userID}`)
+        const response = await axios.delete(`${artUrl}user/${userID}`)
         context.commit("setDeleteUsers", response)
         location.reload()
       }catch(e){
         context.commit("setMsg", "An error occurred")
       }
     },
-    async addProduct({ commit }, productData) {
-      const response = await axios.post(`${artUrl}products`, productData)
-      location.reload()
-      commit('setAddProduct', response.data)
+
+    async EditProduct(context, editprod) {
+      try {
+        const res = await axios.patch(`${artUrl}products/${editprod.prodID}`, editprod);
+        context.commit('setDeleteUsers', res.data); 
+        // location.reload();
+        console.log("worked");
+      } catch (error) {
+        console.log(error);
+      }
     },
+
+    
+    async EditUsers(context, editUser) {
+      try {
+        const res = await axios.patch(`${artUrl}user/${editUser.userID}`, editUser);
+        context.commit('setDeleteUsers', res.data); 
+        // location.reload();
+        console.log("worked");
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
+
+
+
+
+    // async addProduct({ commit }, productData) {
+    //   try {
+    //     const res = await axios.post(`${artUrl}product`, productData)
+    //     // commit("setAdd", res.data)
+    //     commit('setAddProduct', response.data)
+    //     console.log("test complete");
+    //   } catch(e) {
+    //     console.log(error);
+    //   }
+    // },
+    async addProduct({ commit }, productData) {
+      try {
+        const response = await axios.post(`${artUrl}products`, productData);
+        // Handle success, e.g., commit the mutation or take any other actions
+        commit('setAddProduct', response.data);
+        // Reload your data or take other necessary actions
+        location.reload();
+      } catch (error) {
+        // Handle the error here, e.g., display an error message
+        console.error('An error occurred:', error);
+      }
+    },
+
+
+
+
+
+
+
+    // async addProduct({ commit }, productData) {
+    //   const response = await axios.post(`${artUrl}products`, productData)
+    //   location.reload()
+    //   commit('setAddProduct', response.data)
+    // },
     async addUser({ commit }, userData) {
       try {
         const response = await axios.post(`${artUrl}users`, userData)
@@ -120,9 +187,10 @@ export default createStore({
         console.log(error);
       }
     },
+    //register
     async register(context, payload) {
       try {
-        const { msg } = (await axios.post(`${url}users`, payload)).data;
+        const { msg } = (await axios.post(`${artUrl}users`, payload)).data;
         if (msg) {
           sweet({
             title: "Registration",
@@ -148,12 +216,12 @@ export default createStore({
     async login(context, payload) {
       try {
         const { msg, token, results } = (
-          await axios.post(`${url}login`, payload)
+          await axios.post(`${artUrl}login`, payload)
         ).data;
         if (results) {
           context.commit("setUser", { results, msg });
           cookies.set("MannUser", { msg, token, results });
-          authenticateUser.applyToken(token);
+          AuthenticateUser.applyToken(token);
           sweet({
             title: msg,
             text: `Welcome back ${results?.firstName} ${results?.lastName}`,
@@ -173,9 +241,19 @@ export default createStore({
         context.commit("setMsg", "An error has occured");
       }
     },
-
-
+    LogOut(context){
+      context.commit('setUser')
+      cookies.remove("MannUser");
+    }
   },
+
+
+
+
+
+
+
+
   modules: {
   }
 })

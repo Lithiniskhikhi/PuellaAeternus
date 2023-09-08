@@ -50,10 +50,11 @@
     justify-content: center;
   }
   .h3{
-    color: #000000;
+    color: #C6A443;
     text-align: center;
     margin-top: 2rem;
   }
+  /* Full-width inputs */
   input[type=text], input[type=password] {
     width: 100%;
     padding: 12px 20px;
@@ -76,6 +77,7 @@
   button:hover {
     opacity: 0.8;
   }
+  /* Add padding to containers */
   .container {
     padding: 16px;
     width: 100%;

@@ -32,15 +32,19 @@
           <li class="nav-item" style="margin-right:10rem">
             <router-link class="nav-link" to="/contact" style="color:#000">CONTACT</router-link>
           </li>
+          <li class="nav-item" >
+            <router-link class="nav-link" to="/register" style="color:#000">register</router-link>
+          </li>
          
           <li class="nav-item">
-            <router-link class="nav-link" to="/login" style="color:#000">login</router-link>
+            <router-link class="nav-link" to="/login" style="color:#000"><i class="bi bi-person"></i></router-link>
           </li>
-          <i class="bi bi-bag" style="margin-right:2rem"></i>
+          <!-- <i class="bi bi-cart"></i> -->
+          <!-- <i class="bi bi-bag" style="margin-right:2rem"></i> -->
           <form class="d-flex" role="search">
             <!-- <i class="bi bi-search"   style="margin-right:2rem"></i> -->
-            <i class="bi bi-heart" style="margin-right:2rem"></i>
-            <i class="bi bi-person"></i>
+            <!-- <i class="bi bi-heart" style="margin-right:2rem"></i>
+            <i class="bi bi-person"></i> -->
         </form>
          
         </ul>

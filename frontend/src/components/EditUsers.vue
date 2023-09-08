@@ -1,0 +1,39 @@
+<template>
+    <div>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editmodel" data-bs-whatever="@mdo">Edit</button>
+<div class="modal fade" id="editmodel" tabindex="-1" aria-labelledby="editmodel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="editmodel">New message{{ editUser.userID }}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+</template>
+<script>
+    export default {
+        
+ 
+    }
+</script>
+<style scoped>
+.btn{
+    background-color: black;
+    border-radius: 1px;
+    color: white;
+}
+</style>
+
+
+
+
+
+
+
