@@ -248,23 +248,23 @@ export default createStore({
   },
 
   //filter
-  async FilterName(context) {
-    try {
-      const { data } = await axios.get(`${artUrl}products`);
-      context.commit("SortName", data.results);
-    } catch (e) {
-      context.commit("setMsg", "An Error has occurred ");
-    }
-  },
+  // async FilterName(context) {
+  //   try {
+  //     const { data } = await axios.get(`${artUrl}products`);
+  //     context.commit("SortName", data.results);
+  //   } catch (e) {
+  //     context.commit("setMsg", "An Error has occurred ");
+  //   }
+  // },
   
-  async FilterPrice(context) {
-    try {
-      const { data } = await axios.get(`${artUrl}products`);
-      context.commit("SortPrice", data.results);
-    } catch (e) {
-      context.commit("setMsg", "An Error has occurred ");
-    }
-  },
+  // async FilterPrice(context) {
+  //   try {
+  //     const { data } = await axios.get(`${artUrl}products`);
+  //     context.commit("SortPrice", data.results);
+  //   } catch (e) {
+  //     context.commit("setMsg", "An Error has occurred ");
+  //   }
+  // },
   
 
   
