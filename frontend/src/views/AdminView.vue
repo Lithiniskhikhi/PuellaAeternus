@@ -1,10 +1,9 @@
 <template>
     <div class="about">
       <br>
-      <br>
   <h1>ADMIN</h1>
   <AddProduct/>
-  <button>add products</button>
+  <!-- <button>add products</button> -->
   <br>
       <div class="table-responsive" style="margin-top: 1rem">
         <table class="table">
@@ -34,8 +33,8 @@
                   style="width: 5rem"
                 />
               </td>
-              <td><router-link :to="{ name: 'editProd', params: { id: product.prodID}}">Edit</router-link></td>
-              <td><button class="btn" type="button" @click="deleteProduct(product.prodID)">Delete</button></td>
+              <td><router-link :to="{ name: 'editProd', params: { id: product.prodID}}"><i class="bi bi-pen"></i></router-link></td>
+              <td><button class="btn" type="button" @click="deleteProduct(product.prodID)"><i class="bi bi-trash"></i></button></td>
             </tr>
           </tbody>
         </table>
@@ -65,9 +64,10 @@
                 <th scope="col">Delete</th>
               </tr>
             </thead>
-            <tbody v-for="user in users" :key="user.userID">
-              <tr>
+            <tbody>
+              <tr v-for="user in users" :key="user.userID">
                 <th scope="row">{{ user.userID }}</th>
+                <!-- <th>{{ user.userID }}</th> -->
                 <th>{{ user.firstName }}</th>
                 <td>{{ user.lastName }}</td>
                 <td>{{ user.userAge }}</td>
@@ -81,8 +81,8 @@
                     style="width: 5rem"
                   />
                 </td>
-                <td><button>Edit</button></td>
-                <td><button class="btn" type="button" @click="deleteUser(user.userID)">Delete</button></td>
+                <td><router-link :to="{ name: 'editUser', params: { userID: user.userID}}"><i class="bi bi-pen"></i></router-link></td>
+                <td><button class="btn" type="button" @click="deleteUser(user.userID)"><i class="bi bi-trash cl-black"></i></button></td>
               </tr>
             </tbody>
           </table>
@@ -101,7 +101,8 @@
   </template>
     <script>
     import AddUser from '@/components/AddUser.vue'
-    import EditProducts from '@/components/EditProducts.vue'
+    // import EditProducts from '@/components/EditProducts.vue'
+    import EditUsers from '@/components/EditUsers.vue'
 
    import AddProduct from '@/components/AddProduct.vue'
   
@@ -124,7 +125,8 @@
     components:{
         AddUser,
         AddProduct,
-        EditProducts
+        // EditProducts,
+        EditUsers
       //  HeaderComp
      },
      methods: {
@@ -145,8 +147,12 @@
     margin-left: 20px ;
     font-family: 'Phudu', cursive;
   color: #000;
-  }
+  };
   
+  button{
+    text-decoration: none;
+    color: #000;
+  };
   </style>
   
   

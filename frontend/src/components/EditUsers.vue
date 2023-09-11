@@ -5,10 +5,74 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="editmodel">New message{{ editUser.userID }}</h1>
+        <h1 class="modal-title fs-5" id="editmodel">{{ editUser.userID }}</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-
+      <div class="modal-body">
+        <form @submit.prevent="addForm" class="d-flex flex-column gap-5">
+            <input
+            type="text"
+            v-model="editUser.userID"
+            placeholder="ID"
+            name=""
+            id=""
+            required
+          />
+          <input
+            type="text"
+            v-model="editUser.firstName"
+            placeholder="quantity"
+            name=""
+            id=""
+            required
+          />
+          <input
+            type="text"
+            v-model="editUser.lastName"
+            placeholder="amount"
+            name=""
+            id=""
+            required
+          />
+          <input
+            type="number"
+            v-model="editUser.userAge"
+            placeholder="category"
+            name=""
+            id=""
+            required
+          />
+          <input
+            type="text"
+            v-model="editUser.gender"
+            placeholder="image"
+            name=""
+            id=""
+          />
+          <input
+          type="text"
+          v-model="editUser.userRole"
+          placeholder="image"
+          name=""
+          id=""
+        />
+        <input
+        type="text"
+        v-model="editUser.emailAdd"
+        placeholder="image"
+        name=""
+        id=""
+      />
+      <input
+      type="text"
+      v-model="editUser.profileLUrl"
+      placeholder="image"
+      name=""
+      id=""
+    />
+          <button type="submit" class="btn">Save</button>
+        </form>
+      </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
@@ -19,7 +83,28 @@
 </template>
 <script>
     export default {
-        
+        data(){
+            return {
+        editUser: {
+        //  userID: this.id,
+          firstName:"",
+          lastName:"",
+          userAge: "",
+          gender: "",
+          userRole: "",
+          emailAdd: "",
+          profileLUrl: "",
+        },
+      }
+        },
+        computed:{
+            users(){
+                return this.$store.state.users
+            }
+        },
+        mounted(){
+            this.$store.dispatch('fetchUsers')
+        }
  
     }
 </script>

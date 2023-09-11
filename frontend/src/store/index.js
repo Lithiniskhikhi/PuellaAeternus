@@ -130,8 +130,8 @@ export default createStore({
     
     async EditUsers(context, editUser) {
       try {
-        const res = await axios.patch(`${artUrl}user/${editUser.userID}`, editUser);
-        context.commit('setDeleteUsers', res.data); 
+        const res = await axios.put(`${artUrl}user/${editUser.userID}`, editUser);
+        context.commit('setDeleteUsers', res.data);
         // location.reload();
         console.log("worked");
       } catch (error) {
@@ -247,13 +247,27 @@ export default createStore({
     }
   },
 
+  //filter
+  async FilterName(context) {
+    try {
+      const { data } = await axios.get(`${artUrl}products`);
+      context.commit("SortName", data.results);
+    } catch (e) {
+      context.commit("setMsg", "An Error has occurred ");
+    }
+  },
+  
+  async FilterPrice(context) {
+    try {
+      const { data } = await axios.get(`${artUrl}products`);
+      context.commit("SortPrice", data.results);
+    } catch (e) {
+      context.commit("setMsg", "An Error has occurred ");
+    }
+  },
+  
 
-
-
-
-
-
-
+  
   modules: {
   }
 })

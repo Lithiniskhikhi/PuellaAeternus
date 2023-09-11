@@ -5,43 +5,64 @@
         <form @submit.prevent="addForm" class="d-flex flex-column gap-5">
           <input
             type="text"
-            v-model="editprod.prodName"
-            placeholder="name"
-            name=""
-            id=""
-            required
-          />
-          <input
-            type="number"
-            v-model="editprod.quantity"
-            placeholder="quantity"
-            name=""
-            id=""
-            required
-          />
-          <input
-            type="number"
-            v-model="editprod.amount"
-            placeholder="amount"
+            v-model="editUser.userID"
+            placeholder="Id"
             name=""
             id=""
             required
           />
           <input
             type="text"
-            v-model="editprod.Category"
-            placeholder="category"
+            v-model="editUser.firstName"
+            placeholder="firstName"
             name=""
             id=""
             required
           />
           <input
             type="text"
-            v-model="editprod.prodUrl"
-            placeholder="image"
+            v-model="editUser.lastName"
+            placeholder="lastName"
+            name=""
+            id=""
+            required
+          />
+          <input
+            type="number"
+            v-model="editUser.userAge"
+            placeholder="userAge"
+            name=""
+            id=""
+            required
+          />
+          <input
+            type="text"
+            v-model="editUser.gender"
+            placeholder="gender"
             name=""
             id=""
           />
+          <input
+          type="text"
+          v-model="editUser.userRole"
+          placeholder="userRole"
+          name=""
+          id=""
+        />
+        <input
+        type="text"
+        v-model="editUser.emailAdd"
+        placeholder="emailAdd"
+        name=""
+        id=""
+      />
+      <input
+      type="text"
+      v-model="editUser.profileLUrl"
+      placeholder="profileLUrl"
+      name=""
+      id=""
+    />
           <button type="submit" class="btn">Save</button>
         </form>
       </div>
@@ -50,26 +71,38 @@
   
   <script>
   export default {
+
+    computed:{
+            users(){
+                return this.$store.state.users
+            }
+        },
+        mounted(){
+            this.$store.dispatch('fetchUsers')
+        },
+
     data() {
       return {
-        editprod: {
-          prodID: this.id,
-          prodName: "",
-          quantity: "",
-          amount: "",
-          Category: "",
-          prodUrl: "",
+        editUser: {
+         userID: this.id,
+          firstName:"",
+          lastName:"",
+          userAge: "",
+          gender: "",
+          userRole: "",
+          emailAdd: "",
+          profileLUrl: "",
         },
       };
     },
-    props: ["id"],
+    props: ["id?"],
     methods: {
       addForm() {
-        this.$store.dispatch("EditProduct", this.editprod);
+        this.$store.dispatch("EditUsers", this.editUser);
       },
     },
   };
   </script>
   
   <style scoped>
-  </style>
+  </style> 

@@ -1,5 +1,6 @@
 <template>
     <div>
+        <h2>register</h2>
         <form @submit.prevent="register">
           <div class="mb-3">
             <label for="exampleInputfirstName1" class="form-label text-black">ID</label>
@@ -101,7 +102,7 @@ export default {
                 gender: "",
                 emailAdd: "",
                 userPass: "",
-                profileLUrl: "https://i.postimg.cc/HntQPB1k/Feels-Okay-Man.webp"
+                profileLUrl: "https://i.postimg.cc/MpHd6cNj/Screenshot-2023-08-22-083534.png"
             }
         }
     },
@@ -120,7 +121,6 @@ export default {
 }
 .btn{
  color: black;
- background-color: #C6A443;
  margin-left: 29rem;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1" data-bs-whatever="@mdo">Add</button>
+        <button type="button" class="btn " data-bs-toggle="modal" data-bs-target="#exampleModal1" data-bs-whatever="@mdo"><i class="bi bi-clipboard-plus"></i></button>
 <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -49,11 +49,7 @@
     }
 </script>
 <style scoped>
-.btn{
-    background-color: black;
-    border-radius: 1px;
-    color: white;
-}
+
 </style>
 
 
