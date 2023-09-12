@@ -58,6 +58,33 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/LoginView.vue')
   },
   {
+    path: '/cart',
+    name: 'cart',
+    props: true,
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/CartView.vue')
+  },
+  {
+    path: '/checkout',
+    name: 'checkout',
+    props: true,
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/CheckoutView.vue')
+  },
+  {
+    path: '/user',
+    name: 'user',
+    props: true,
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/userView.vue')
+  },
+  {
     path: '/register',
     name: 'register',
     props: true,
@@ -67,11 +94,25 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/RegisterView.vue')
   },
   {
+    path: '/Oil',
+    name: 'Oil',
+  
+    component: () => import('../views/Oil.vue')
+  },
+  {
+    path: '/Renaissance',
+    name: 'Renaissance',
+  
+    component: () => import('../views/Renaissance.vue')
+  },
+ 
+  {
     path: '/editProd/:id',
     name: 'editProd',
     props: true,
     component: () => import('../views/EditProdView.vue')
   },
+
   {
     path: '/editUser/:userID',
     name: 'editUser',

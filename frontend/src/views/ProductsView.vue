@@ -6,18 +6,29 @@
             <br /> -->
       <h1 style="margin-top: 2rem">NEW ARRIVALS</h1>
       <br />
-      <button class="sort" @click="FilterName">Sort Name</button>
-      <button class="sort" @click="FilterPrice">Sort price</button>
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav mx-auto">
+              <router-link to="/Oil" class="nav-link">Oil Painting</router-link>
+              <router-link to="/Renaissance" class="nav-link">Renaissance Painting</router-link>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <input type="text" v-model="searchQuery" placeholder="Search...">
+      <button @click="searchProducts">Search</button>
 
       <div class="dropdown">
         <button
           class="btn btn-secondary dropdown-toggle"
-          style="width: 10rem; background-color: rgb(37, 37, 139)"
+          style=" background-color: rgb(37, 37, 139)"
           type="button"
           data-bs-toggle="dropdown"
-          aria-expanded="false"
-          
-        >
+          aria-expanded="false" >
           Filter Products
         </button>
         <div class="dropdown-menu" style="background-color: rgb(243, 237, 237)">
@@ -46,10 +57,13 @@
           </div>
         </div>
       </div>
+      <button style="width:5rem" @click="sortByName">Sort Name</button>
+      <button  style="width:5rem" @click="sortByPrice">Sort price</button>
       <div class="row" style="margin-top: 3rem" v-if="products">
+      
         <div
           class="car col-12 col-sm-6 col-md-4 p-2"
-          v-for="product in products"
+          v-for="product in sortedProducts"
           :key="product.prodID"
           style="width: 17rem; margin-inline: 4rem; margin-bottom: 2rem"
         >
@@ -87,28 +101,84 @@
 
 <script>
 export default {
-  components: {},
-  computed: {
-    products() {
-      return this.$store.state.products;
-    },
+  components: {
   },
-  mounted() {
-    this.$store.dispatch("fetchProducts");
-    // this.$store.dispatch('fetchProduct', this.prodID)
+  computed: {
+  products() {
+    return this.$store.state.products;
+  },
+  sortedProducts() {
+    let filteredProducts = this.products;
+    // Apply search filter
+    if (this.searchQuery) {
+      const query = this.searchQuery.toLowerCase();
+      filteredProducts = filteredProducts.filter((product) =>
+        product.prodName.toLowerCase().includes(query)
+      );
+    }
+    // Sort by selected type
+    if (this.sortType === 'price') {
+      return [...filteredProducts].sort((a, b) => a.amount - b.amount);
+    } else if (this.sortType === 'name') {
+      return [...filteredProducts].sort((a, b) =>
+        a.prodName.localeCompare(b.prodName)
+      );
+    }
+    return filteredProducts;
+  }
+},
+    sortedProducts() {
+      if (this.sortType === 'price') {
+        return [...this.products].sort((a, b) => a.amount - b.amount);
+      } else if (this.sortType === 'name') {
+        return [...this.products].sort((a, b) =>
+          a.prodName.localeCompare(b.prodName)
+        );
+      }
+      return this.products;
+    },
+    sortedProducts() {
+    let filteredProducts = this.products;
+    // Apply search filter
+    if (this.searchQuery) {
+      const query = this.searchQuery.toLowerCase();
+      filteredProducts = filteredProducts.filter((product) =>
+        product.prodName.toLowerCase().includes(query)
+      );
+    }
+    // Sort by selected type
+    if (this.sortType === 'price') {
+      return [...filteredProducts].sort((a, b) => a.amount - b.amount);
+    } else if (this.sortType === 'name') {
+      return [...filteredProducts].sort((a, b) =>
+        a.prodName.localeCompare(b.prodName)
+      );
+    }
+    return filteredProducts;
+  },
+  data() {
+    return {
+      sortType: '',
+      searchQuery: ''
+    };
   },
   methods: {
-    SortName() {
-    this.$store.dispatch("FilterName");
+    sortByName() {
+      this.sortType = 'name';
+    },
+    sortByPrice() {
+      this.sortType = 'price';
+    },
+    searchProducts() {
+      this.$store.commit('setSearchQuery', this.searchQuery);
+    }
   },
-  
-  SortPrice() {
-    this.$store.dispatch("FilterPrice");
-  },
-  },
- 
+  mounted() {
+    this.$store.dispatch('fetchProducts');
+  }
 };
 </script>
+
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Castoro+Titling&family=Phudu:wght@300&family=Vina+Sans&display=swap");

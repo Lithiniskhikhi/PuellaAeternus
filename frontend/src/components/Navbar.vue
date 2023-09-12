@@ -29,7 +29,7 @@
           <li class="nav-item">
             <router-link class="nav-link" to="/admin" style="color:#000">ADMIN</router-link>
           </li>
-          <li class="nav-item" style="margin-right:10rem">
+          <li class="nav-item" >
             <router-link class="nav-link" to="/contact" style="color:#000">CONTACT</router-link>
           </li>
           <li class="nav-item" >
@@ -38,6 +38,15 @@
          
           <li class="nav-item">
             <router-link class="nav-link" to="/login" style="color:#000"><i class="bi bi-person"></i></router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/cart" style="color:#000"><i class="bi bi-cart"></i></router-link>
+          </li>
+          <li class="nav-item" >
+            <router-link class="nav-link" to="/checkout" style="color:#000">Checkout</router-link>
+          </li>
+          <li class="nav-item" >
+            <router-link class="nav-link" to="/user" style="color:#000">User</router-link>
           </li>
           <!-- <i class="bi bi-cart"></i> -->
           <!-- <i class="bi bi-bag" style="margin-right:2rem"></i> -->

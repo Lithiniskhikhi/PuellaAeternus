@@ -56,7 +56,7 @@
           </h4>
 
        
-          <a href="./ProductsView.vue">
+          <a href="./Products">
             <button
               type="button"
               class="btn"

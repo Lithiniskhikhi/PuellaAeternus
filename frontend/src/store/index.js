@@ -165,7 +165,22 @@ export default createStore({
         console.error('An error occurred:', error);
       }
     },
-
+    async fetchOil(context) {
+      try{
+        const {data} = await axios.get(`${artUrl}oil`)
+        context.commit("setOil", data.results)
+      }catch(e){
+        console.log(e)
+      }
+    },
+    async fetchRenaissance(context) {
+      try{
+        const {data} = await axios.get(`${artUrl}Renaissance`)
+        context.commit("setRenaissance", data.results)
+      }catch(e){
+        console.log(e)
+      }
+    },
 
 
 
@@ -220,6 +235,7 @@ export default createStore({
         ).data;
         if (results) {
           context.commit("setUser", { results, msg });
+          localStorage.setItem("user", JSON.stringify(results))
           cookies.set("MannUser", { msg, token, results });
           AuthenticateUser.applyToken(token);
           sweet({
