@@ -16,7 +16,7 @@ class Products{
     }
     fetchProduct(req,res){
         const query = `
-        SELECT * FROM Products WHERE prodID = ${req.params.id};
+        SELECT * WHERE prodID = ${req.params.id};
         `
         db .query(query,(err,results)=>{
             if(err) throw err
@@ -24,6 +24,34 @@ class Products{
                 status:res.statusCode,
                 results
             })
+        })
+    }
+    fetchOil(req, res){
+        const query = `
+        SELECT * FROM Products
+        WHERE Category = "Oil painting";
+        `
+        db.query(query,
+           (err, results) =>{
+            if (err) throw err
+        res.json({
+            status: res.statusCode,
+            results,
+        })
+        })
+    }
+    fetchRenaissance(req, res){
+        const query = `
+        SELECT * FROM Products
+        WHERE Category = "Renaissance painting";
+        `
+        db.query(query,
+           (err, results) =>{
+            if (err) throw err
+        res.json({
+            status: res.statusCode,
+            results,
+        })
         })
     }
     deleteProducts(req,res){
@@ -35,8 +63,7 @@ class Products{
             if(err) throw err
             res.json({
                 status: res.statusCode,
-                results,
-                msg: 'Product deleted'
+                results
             })
         })
     }
@@ -68,3 +95,4 @@ class Products{
     }
 }
 module.exports = Products
+
