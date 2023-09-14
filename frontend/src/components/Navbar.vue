@@ -42,9 +42,9 @@
           <li class="nav-item">
             <router-link class="nav-link" to="/cart" style="color:#000"><i class="bi bi-cart"></i></router-link>
           </li>
-          <li class="nav-item" >
+          <!-- <li class="nav-item" >
             <router-link class="nav-link" to="/checkout" style="color:#000">Checkout</router-link>
-          </li>
+          </li> -->
           <li class="nav-item" >
             <router-link class="nav-link" to="/user" style="color:#000">User</router-link>
           </li>

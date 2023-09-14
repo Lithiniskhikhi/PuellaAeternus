@@ -6,6 +6,8 @@
             <br /> -->
       <h1 style="margin-top: 2rem">NEW ARRIVALS</h1>
       <br />
+      <div class="row" style="margin-top: 3rem" v-if="products">
+
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,6 +21,8 @@
           </div>
         </div>
       </nav>
+      <button style="width:5rem" @click="sortByName">Sort Name</button>
+      <button  style="width:5rem" @click="sortByPrice">Sort price</button>
       <input type="text" v-model="searchQuery" placeholder="Search...">
       <button @click="searchProducts">Search</button>
 
@@ -57,9 +61,7 @@
           </div>
         </div>
       </div>
-      <button style="width:5rem" @click="sortByName">Sort Name</button>
-      <button  style="width:5rem" @click="sortByPrice">Sort price</button>
-      <div class="row" style="margin-top: 3rem" v-if="products">
+     
       
         <div
           class="car col-12 col-sm-6 col-md-4 p-2"
@@ -88,20 +90,26 @@
                 View More
               </button></router-link
             >
+            <button @click="addToCart(product)" class="btn bg-black">Buy Now</button>
           </div>
         </div>
         <i class="bi bi-cart"></i>
       </div>
-      <!-- <div class="else" v-else>
+      <div class="else" v-else>
               <Spinner/>
-            </div> -->
+            </div>
     </div>
   </div>
 </template>
 
 <script>
+ import Spinner from '@/components/Spinner.vue'
+
+
+
 export default {
   components: {
+   Spinner, 
   },
   computed: {
   products() {
@@ -125,7 +133,10 @@ export default {
       );
     }
     return filteredProducts;
-  }
+  },
+  filteredProducts() {
+      return this.$store.getters.filteredProducts;
+    },
 },
     sortedProducts() {
       if (this.sortType === 'price') {
@@ -171,7 +182,16 @@ export default {
     },
     searchProducts() {
       this.$store.commit('setSearchQuery', this.searchQuery);
-    }
+    },
+    addToCart(product) {
+        const data = JSON.parse(localStorage.getItem('cart')) || []
+        const newData = {key: product}
+        data.push(newData)
+        localStorage.setItem('cart', JSON.stringify(data))
+    },
+    // filterProducts(category) {
+    //   this.$store.dispatch('filterProductsByCategory', category);
+    // },
   },
   mounted() {
     this.$store.dispatch('fetchProducts');

@@ -1,7 +1,7 @@
 import { createStore } from 'vuex'
 import axios from 'axios'
-import sweet from 'sweetalert'
 import router from '@/router'
+import sweet from 'sweetalert'
 import {useCookies} from 'vue3-cookies'
 const {cookies}= useCookies()
 const artUrl= "https://capstone-26ks.onrender.com/"
@@ -21,10 +21,18 @@ export default createStore({
     addUser:null,
     editProduct:null,
     editUsers:null,
-
+    filterName:null,
+filterCategory:null,
+cart:[],
 
   },
   getters: {
+    filteredProducts(state) {
+      if (state.selectedCategory) {
+        return state.products.filter(product => product.category === state.selectedCategory);
+      }
+      return state.products;
+    },
   },
   mutations: {
     setUsers(state, users) {
@@ -41,6 +49,12 @@ export default createStore({
     },
     setSpinner(state, spinner) {
       state.spinner = spinner
+    },
+    filterName(state,filterName){
+      state.filterName = filterName
+    },
+    filterCategory(state,filterCategory){
+      state.filterCategory = filterCategory
     },
     setToken(state, token) {
       state.token = token
@@ -65,8 +79,14 @@ export default createStore({
     },
     editUsers(state, data){
       state.editUsers= data
+    },
+    setCart(state, product){
+      state.cart = product
+    },
+    addToCart(state, product){
+      state.cart.push(product)
+      localStorage.setItem('cart', JSON.stringify(state.cart))
     }
-
 
 
   },
@@ -139,7 +159,10 @@ export default createStore({
       }
     },
 
-
+    async filterProductsByCategory(context, category) {
+      context.commit('setSelectedCategory', category);
+    },
+  
 
 
 
@@ -167,7 +190,7 @@ export default createStore({
     },
     async fetchOil(context) {
       try{
-        const {data} = await axios.get(`${artUrl}oil`)
+        const {data} = await axios.get(`${artUrl}Oil painting`)
         context.commit("setOil", data.results)
       }catch(e){
         console.log(e)
@@ -175,13 +198,21 @@ export default createStore({
     },
     async fetchRenaissance(context) {
       try{
-        const {data} = await axios.get(`${artUrl}Renaissance`)
+        const {data} = await axios.get(`${artUrl}Renaissance painting`)
         context.commit("setRenaissance", data.results)
       }catch(e){
         console.log(e)
       }
     },
-
+    async filterCategory(context) {
+      try{
+        const {data} = await axios.get(`${artUrl}filterCategory`)
+        context.commit("filterCategory", data.results)
+        console.log(data.results);
+      }catch(e){
+        console.log(e)
+      }
+    },
 
 
 
@@ -282,18 +313,37 @@ export default createStore({
   //   }
   // },
   
+  async addToCart() {
+    try {
+      cart.push(); // You need to specify what you want to push into the cart array
+      localStorage.setItem('checkout', JSON.stringify(cart));
+    } catch (error) { // Use 'error' instead of 'e'
+      alert(error);
+    }
+  },
+
 
   
-  modules: {
-  }
-})
-window.addEventListener("scroll", function() {
-  //Select your navigation bar
-  var nav = document.getElementsByTagName("nav")[0];
-  //Change 20 to anything you want like nav.offsetHeight
-  if(window.scrollY > 20) {
-      nav.style.borderBottom = "5px solid dodgerblue";
-   } else {
-     nav.style.border = "0";
-  }
-});
+
+  // window.addEventListener("scroll", function() {
+  //   // Select your navigation bar
+  //   var nav = document.getElementsByTagName("nav")[0];
+  //   // Change 20 to anything you want like nav.offsetHeight
+  //   if (window.scrollY > 20) {
+  //     nav.style.borderBottom = "5px solid dodgerblue";
+  //   } else {
+  //     nav.style.borderBottom = "0"; // Change to borderBottom for consistency
+  //   }
+  // }
+ } )
+ const products = [
+  {
+    prodID: 1,
+    category: 'Oil Painting', // Add this field
+  },
+  {
+    prodID: 2,
+    category: 'Renaissance Painting', // Add this field
+  },
+  // ...
+];

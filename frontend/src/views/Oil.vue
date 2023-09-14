@@ -6,7 +6,7 @@
         :key="product.prodID"
         style="width: 17rem; margin-inline: 4rem; margin-bottom: 2rem"
       >
-        <img :src="product.prodLUrl" class="paint" alt="" />
+        <img :src="product.prodUrl" class="paint" alt="" />
         <div class="card-body" style="margin-right 13rem;">
           <br />
           <h5 class="card-title">
@@ -33,9 +33,21 @@
 </template>
 
 <script>
-    export default {
-        
+  export default {
+        computed:{
+            products(){
+                return this.$store.state.products
+            }
+        },
+        mounted(){
+            this.$store.dispatch('fetchOil')
+        }
     }
+
+
+
+
+
 </script>
 
 <style scoped>

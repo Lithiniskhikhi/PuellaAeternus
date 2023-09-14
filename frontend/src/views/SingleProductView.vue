@@ -22,7 +22,8 @@
                   </div>
                 </div>
                 <div v-else>
-                    <h1>Loading...</h1>
+                    <!-- <h1>Loading...</h1> -->
+                    <img src="https://media1.giphy.com/media/feN0YJbVs0fwA/giphy.gif?cid=ecf05e47fcvxofex7sb57j48gbdkt03sfulim7l57zmdkazj&ep=v1_gifs_search&rid=giphy.gif&ct=g">
                 </div>
             </body>
         </div>
