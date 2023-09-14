@@ -27,7 +27,7 @@ app.use((req, res, next) => {
     routes
   )
 
-  routes.get('^/$|/nodeEOMP', (req, res)=>{
+  routes.get('/', (req, res)=>{
     res.sendFile(path.resolve(__dirname,
         './static/html/index.html'))
   })
