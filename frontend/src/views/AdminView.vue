@@ -93,46 +93,7 @@
 
 
 
-        
-      <div class="table-responsive" style="margin-top: 1rem" v-if="users">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">ID</th>
-              <th scope="col">Name</th>
-              <th scope="col">Surname</th>
-              <th scope="col">Age</th>
-              <th scope="col">Gender</th>
-              <th scope="col">Role</th>
-              <th scope="col">Email</th>
-              <th scope="col">Profile</th>
-              <th scope="col">Edit</th>
-              <th scope="col">Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="user in users" :key="user.userID">
-              <th scope="row">{{ user.userID }}</th>
-              <th>{{ user.firstName }}</th>
-              <td>{{ user.lastName }}</td>
-              <td>{{ user.userAge }}</td>
-              <td>{{ user.gender }}</td>
-              <td>{{ user.userRole }}</td>
-              <td>{{ user.emailAdd }}</td>
-              <td>
-                <img
-                  :src="user.profileLUrl"
-                  :alt="user.prodName"
-                  style="width: 5rem"
-                />
-              </td>
-              <td><router-link :to="{ name: 'editUser', params: { userID: user.userID}}"><i class="bi bi-pen"></i></router-link></td>
-              <td><button class="btn" type="button" @click="deleteUser(user.userID)"><i class="bi bi-trash cl-black"></i></button></td>
-            </tr>
-          </tbody>
-        </table>
-        
-      </div> 
+    
       
 
         <div class="else" v-else>

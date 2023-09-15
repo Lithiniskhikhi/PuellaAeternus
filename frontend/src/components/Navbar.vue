@@ -27,7 +27,7 @@
             <router-link class="nav-link" to="/Products" style="color:#000">PRODUCTS</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/admin" style="color:#000">ADMIN</router-link>
+            <router-link class="nav-link" to="/admin" style="color:#000"  >ADMIN</router-link>
           </li>
           <li class="nav-item" >
             <router-link class="nav-link" to="/contact" style="color:#000">CONTACT</router-link>
@@ -46,7 +46,7 @@
             <router-link class="nav-link" to="/checkout" style="color:#000">Checkout</router-link>
           </li> -->
           <li class="nav-item" >
-            <router-link class="nav-link" to="/user" style="color:#000">User</router-link>
+            <router-link class="nav-link" to="/user" style="color:#000"><i class="bi bi-person-circle"></i></router-link>
           </li>
           <!-- <i class="bi bi-cart"></i> -->
           <!-- <i class="bi bi-bag" style="margin-right:2rem"></i> -->
@@ -65,9 +65,7 @@
 </template>
 
 <script>
-    export default {
-        
-    }
+    
 </script>
 
 <style scoped>

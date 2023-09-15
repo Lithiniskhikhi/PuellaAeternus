@@ -86,7 +86,10 @@ cart:[],
     addToCart(state, product){
       state.cart.push(product)
       localStorage.setItem('cart', JSON.stringify(state.cart))
-    }
+    },
+    setSelectedCategory(state, category) {
+      state.selectedCategory = category;
+    },
 
 
   },
@@ -139,7 +142,7 @@ cart:[],
     async EditProduct(context, editprod) {
       try {
         const res = await axios.patch(`${artUrl}products/${editprod.prodID}`, editprod);
-        context.commit('setDeleteUsers', res.data); 
+        context.commit('setEditUsers', res.data); 
         // location.reload();
         console.log("worked");
       } catch (error) {
@@ -188,31 +191,31 @@ cart:[],
         console.error('An error occurred:', error);
       }
     },
-    async fetchOil(context) {
-      try{
-        const {data} = await axios.get(`${artUrl}Oil painting`)
-        context.commit("setOil", data.results)
-      }catch(e){
-        console.log(e)
-      }
-    },
-    async fetchRenaissance(context) {
-      try{
-        const {data} = await axios.get(`${artUrl}Renaissance painting`)
-        context.commit("setRenaissance", data.results)
-      }catch(e){
-        console.log(e)
-      }
-    },
-    async filterCategory(context) {
-      try{
-        const {data} = await axios.get(`${artUrl}filterCategory`)
-        context.commit("filterCategory", data.results)
-        console.log(data.results);
-      }catch(e){
-        console.log(e)
-      }
-    },
+    // async fetchOil(context) {
+    //   try{
+    //     const {data} = await axios.get(`${artUrl}Oil painting`)
+    //     context.commit("setOil", data.results)
+    //   }catch(e){
+    //     console.log(e)
+    //   }
+    // },
+    // async fetchRenaissance(context) {
+    //   try{
+    //     const {data} = await axios.get(`${artUrl}Renaissance painting`)
+    //     context.commit("setRenaissance", data.results)
+    //   }catch(e){
+    //     console.log(e)
+    //   }
+    // },
+    // async filterCategory(context) {
+    //   try{
+    //     const {data} = await axios.get(`${artUrl}filterCategory`)
+    //     context.commit("filterCategory", data.results)
+    //     console.log(data.results);
+    //   }catch(e){
+    //     console.log(e)
+    //   }
+    // },
 
 
 
@@ -291,6 +294,7 @@ cart:[],
     LogOut(context){
       context.commit('setUser')
       cookies.remove("MannUser");
+      localStorage.removeItem("user")
     }
   },
 
@@ -336,14 +340,3 @@ cart:[],
   //   }
   // }
  } )
- const products = [
-  {
-    prodID: 1,
-    category: 'Oil Painting', // Add this field
-  },
-  {
-    prodID: 2,
-    category: 'Renaissance Painting', // Add this field
-  },
-  // ...
-];

@@ -28,12 +28,10 @@
                                 <a href="#">{{ product.key.prodName }}</a>
                                 <div class="product-info">
                                   <div>
-                                    Display: <span class="value">5 inch</span>
+                                    height: <span class="value">50 inch</span>
                                   </div>
-                                  <div>RAM: <span class="value">4GB</span></div>
-                                  <div>
-                                    Memory: <span class="value">32GB</span>
-                                  </div>
+                                  <div>width: <span class="value">15 inch</span></div>
+                                  
                                 </div>
                               </div>
                             </div>

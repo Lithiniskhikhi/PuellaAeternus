@@ -15,8 +15,8 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav mx-auto">
-              <router-link to="/Oil" class="nav-link">Oil Painting</router-link>
-              <router-link to="/Renaissance" class="nav-link">Renaissance Painting</router-link>
+              <button @click="filterByProductIds([4, 8, 3])">Oil Paintings</button>
+              <button @click="filterByProductIds([2, 6])">Renaissance Paintings</button>
             </div>
           </div>
         </div>
@@ -93,7 +93,6 @@
             <button @click="addToCart(product)" class="btn bg-black">Buy Now</button>
           </div>
         </div>
-        <i class="bi bi-cart"></i>
       </div>
       <div class="else" v-else>
               <Spinner/>
@@ -103,25 +102,29 @@
 </template>
 
 <script>
- import Spinner from '@/components/Spinner.vue'
-
-
+import Spinner from '@/components/Spinner.vue'
 
 export default {
   components: {
-   Spinner, 
+    Spinner,
   },
   computed: {
-  products() {
-    return this.$store.state.products;
-  },
-  sortedProducts() {
+    products() {
+      return this.$store.state.products;
+    },
+    sortedProducts() {
     let filteredProducts = this.products;
     // Apply search filter
     if (this.searchQuery) {
       const query = this.searchQuery.toLowerCase();
       filteredProducts = filteredProducts.filter((product) =>
         product.prodName.toLowerCase().includes(query)
+      );
+    }
+    // Filter by selected category
+    if (this.$store.state.selectedCategory) {
+      filteredProducts = filteredProducts.filter((product) =>
+        product.category === this.$store.state.selectedCategory
       );
     }
     // Sort by selected type
@@ -134,39 +137,9 @@ export default {
     }
     return filteredProducts;
   },
-  filteredProducts() {
-      return this.$store.getters.filteredProducts;
-    },
+
+  
 },
-    sortedProducts() {
-      if (this.sortType === 'price') {
-        return [...this.products].sort((a, b) => a.amount - b.amount);
-      } else if (this.sortType === 'name') {
-        return [...this.products].sort((a, b) =>
-          a.prodName.localeCompare(b.prodName)
-        );
-      }
-      return this.products;
-    },
-    sortedProducts() {
-    let filteredProducts = this.products;
-    // Apply search filter
-    if (this.searchQuery) {
-      const query = this.searchQuery.toLowerCase();
-      filteredProducts = filteredProducts.filter((product) =>
-        product.prodName.toLowerCase().includes(query)
-      );
-    }
-    // Sort by selected type
-    if (this.sortType === 'price') {
-      return [...filteredProducts].sort((a, b) => a.amount - b.amount);
-    } else if (this.sortType === 'name') {
-      return [...filteredProducts].sort((a, b) =>
-        a.prodName.localeCompare(b.prodName)
-      );
-    }
-    return filteredProducts;
-  },
   data() {
     return {
       sortType: '',
@@ -184,18 +157,31 @@ export default {
       this.$store.commit('setSearchQuery', this.searchQuery);
     },
     addToCart(product) {
+      const data = JSON.parse(localStorage.getItem('cart')) || []
+      const newData = { key: product }
+      data.push(newData)
+      localStorage.setItem('cart', JSON.stringify(data))
+    },
+    addToCart(product) {
         const data = JSON.parse(localStorage.getItem('cart')) || []
         const newData = {key: product}
         data.push(newData)
         localStorage.setItem('cart', JSON.stringify(data))
     },
-    // filterProducts(category) {
-    //   this.$store.dispatch('filterProductsByCategory', category);
-    // },
+    filterByCategory(category) {
+    this.$store.commit('setSelectedCategory', category);
+  },
+  filterByProductIds(ids) {
+      // Filter products by the provided IDs
+      this.$store.commit('setSelectedCategory', null); // Clear the selected category filter
+      const filteredProducts = this.products.filter(product => ids.includes(product.id));
+      this.$store.commit('setProducts', filteredProducts); // Update the products in the store
+    },
   },
   mounted() {
     this.$store.dispatch('fetchProducts');
-  }
+  },
+  
 };
 </script>
 
