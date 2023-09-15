@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2>register</h2>
+        <h2 style="padding-top: 120px;">REGISTER</h2>
         <form @submit.prevent="register">
           <div class="mb-3">
             <label for="exampleInputfirstName1" class="form-label text-black">ID</label>
@@ -114,6 +114,14 @@ export default {
 }
 </script>
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Castoro+Titling&family=Phudu:wght@300&family=Vina+Sans&display=swap');
+
+  h1{
+    margin: 0;
+    margin-left: 20px ;
+    font-family: 'Phudu', cursive;
+  color: #000;
+  };
 .mb-3{
   width: 40%;
   margin-left: 29rem;
@@ -123,4 +131,37 @@ export default {
  color: black;
  margin-left: 29rem;
 }
+.mb-3 {
+  width: 80%; 
+  margin: 1rem auto; 
+}
+
+.btn {
+  color: black;
+  margin: 0 auto; 
+  display: block; 
+  width: 50%; 
+}
+
+@media (max-width: 300px) and (max-height: 700px) {
+  .mb-3 {
+    width: 90%; 
+  }
+
+  .btn {
+    width: 70%; 
+  }
+}
+h2{
+  color: black;
+  font-family: 'Phudu', cursive;
+
+}
 </style>
+
+
+
+
+
+
+

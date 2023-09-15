@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="about ">
     <!-- <header class="zoom">
       <div class="title">
         <h1>About Puella Aeterna</h1>
@@ -23,7 +23,7 @@
       </div> -->
     <!-- </main> -->
     <br />
-    <h1>ABOUT US</h1>
+    <h1 style="padding-top: 110px;">ABOUT US</h1>
     <br />
     <div class="container">
       <div class="row w-100">
@@ -103,5 +103,24 @@ h4 {
 }
 .about {
   color: black;
+}
+
+@media (width <= 600px) {
+  img {
+    width: 25rem !important; 
+    height: 30rem !important;
+  }
+}
+@media (width <= 450px) {
+  img {
+    width: 20rem !important; 
+    height: 25rem !important;
+  }
+}
+@media (width <= 350px) {
+  img {
+    width: 15rem !important; 
+    height: 20rem !important;
+  }
 }
 </style>

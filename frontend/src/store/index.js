@@ -136,7 +136,7 @@ cart:[],
         context.commit("setMsg", "An error occurred")
       }
     },
-    async DeleteUsers(context, userID ) {
+    async DeleteUsers(context, userID) {
       try{
         const response = await axios.delete(`${artUrl}user/${userID}`)
         context.commit("setDeleteUsers", response)
@@ -229,10 +229,17 @@ cart:[],
 
 
     async addProduct({ commit }, productData) {
+      try{
       const response = await axios.post(`${artUrl}products`, productData)
       location.reload()
       commit('setAddProduct', response.data)
+      }catch(error){
+console.log(error);
+      }
+
+
     },
+    
     async addUser({ commit }, userData) {
       try {
         const response = await axios.post(`${artUrl}users`, userData)

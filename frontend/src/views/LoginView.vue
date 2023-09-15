@@ -1,6 +1,6 @@
 <template>
     <div>
-      <h3 class="h3">ACCOUNT LOGIN</h3>
+      <h3 class="h3" style="padding-top: 120px;">ACCOUNT LOGIN</h3>
       <div style="display: flex; justify-content:center">
         <div class="row">
          <form action="action_page.php" method="post" @submit.prevent="login">
@@ -42,7 +42,14 @@
     }
   </script>
   <style scoped>
-  /* Bordered form */
+  @import url('https://fonts.googleapis.com/css2?family=Castoro+Titling&family=Phudu:wght@300&family=Vina+Sans&display=swap');
+
+  h3{
+    margin: 0;
+    margin-left: 20px ;
+    font-family: 'Phudu', cursive;
+  color: #000;
+  };
   .row{
     border: 1px solid #F1F1F1;
     width: 40%;
@@ -64,7 +71,7 @@
   }
   /* Set a style for all buttons */
   button {
-    background-color: #C6A443;
+    background-color: #5d43c6;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;

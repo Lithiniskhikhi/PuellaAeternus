@@ -3,7 +3,7 @@
       <br>
 
       
-  <h1>ADMIN</h1>
+  <h1 style="padding-top: 120px;">ADMIN</h1>
   <AddProduct/>
   <!-- <button>add products</button> -->
   <br>

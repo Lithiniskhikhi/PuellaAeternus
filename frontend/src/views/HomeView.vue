@@ -1,26 +1,16 @@
 <template>
-  <div class="home">
-    <div class="" style="width:100%">
+  
+  <div class="home" >
+   
+    <div class="" style="width:100% ,padding-top: 120px;">
       <div class="pic">
         <img src="https://i.imgur.com/cdunk8Y.gif" style="width:100%" class="girl">
        </div>
-       <h1 class="centered" id="wordimg" >PUELLA AETERNA</h1>
+       <h1 class="centered" id="wordimg"  >PUELLA AETERNA</h1>
     </div>
  
 
-   <!-- <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img class="d-block w-100" src="https://beautifulbizarre.net/wp-content/uploads/2017/01/maria_kreyn_beautiful_bizarre_003.jpg" alt="First slide">
-      </div>
-      <div class="carousel-item">
-        <img class="d-block w-100" src="https://i.postimg.cc/q7jxBmpC/wallpaperflare-com-wallpaper-4.jpg" alt="Second slide">
-      </div>
-      <div class="carousel-item">
-        <img class="d-block w-100" src="https://i.postimg.cc/Sst097fn/wallpaperflare-com-wallpaper-2.jpg" alt="Third slide">
-      </div>
-    </div>
-  </div> -->
+   
    
    <div class="front">
     <h1 style="margin-top:2rem">DISCOVER COMPOSITIONS</h1>
@@ -99,7 +89,8 @@ h1{
   text-align: center;
   color: white;
   width: 100%;
-  font-family: 'Phudu', cursive 
+  font-family: 'Phudu', cursive ;
+  
 }
 .centered {
   position: absolute;
@@ -195,5 +186,11 @@ h5{
 h2{
   font-family: 'Phudu', cursive; 
 }
-
+@media (max-width: 300px) and (max-height: 700px) {
+  /* Hide the element when the screen width is 300px or less
+     and the screen height is 700px or less */
+  .centered {
+    display: none;
+  }
+}
 </style>

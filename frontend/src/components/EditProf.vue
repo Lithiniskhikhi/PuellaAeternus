@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editmodel" data-bs-whatever="@mdo">Edit</button>
+        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editmodel" data-bs-whatever="@mdo">Edit</button>
 <div class="modal fade" id="editmodel" tabindex="-1" aria-labelledby="editmodel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -34,28 +34,6 @@
             id=""
             required
           />
-          <input
-            type="number"
-            v-model="editUser.userAge"
-            placeholder="category"
-            name=""
-            id=""
-            required
-          />
-          <input
-            type="text"
-            v-model="editUser.gender"
-            placeholder="image"
-            name=""
-            id=""
-          />
-          <input
-          type="text"
-          v-model="editUser.userRole"
-          placeholder="image"
-          name=""
-          id=""
-        />
         <input
         type="text"
         v-model="editUser.emailAdd"
@@ -89,9 +67,6 @@
         //  userID: this.id,
           firstName:"",
           lastName:"",
-          userAge: "",
-          gender: "",
-          userRole: "",
           emailAdd: "",
           profileLUrl: "",
         },
@@ -110,7 +85,7 @@
 </script>
 <style scoped>
 .btn{
-    background-color: black;
+   
     border-radius: 1px;
     color: white;
 }

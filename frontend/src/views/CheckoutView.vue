@@ -131,7 +131,7 @@
           <div class="card card-blue p-3 text-white mb-3">
             <span>You have to pay</span>
             <div class="d-flex flex-row align-items-end mb-3">
-              <h1 class="mb-0 yellow">$549</h1>
+              <h1 class="mb-0 yellow">$</h1>
               <span>.99</span>
             </div>
 
@@ -147,7 +147,7 @@
               >
             </div>
           </div>
-          <button class="btn btn-success px-3">Pay $840</button>
+          <button class="btn btn-success px-3">Pay $</button>
         </div>
       </div>
     </div>

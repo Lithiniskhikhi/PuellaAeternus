@@ -4,7 +4,7 @@
       <section class="shopping-cart dark">
         <div class="container">
           <div class="block-heading">
-            <h2>Shopping Cart</h2>
+            <h2 style="padding-top: 120px;">Shopping Cart</h2>
             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p> -->
           </div>
           <div class="content">

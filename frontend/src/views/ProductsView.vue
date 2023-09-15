@@ -4,7 +4,7 @@
       <!-- <h1 style="color: rgb(228, 220, 220)">Find Movies<span></span></h1>
             <br />
             <br /> -->
-      <h1 style="margin-top: 2rem">NEW ARRIVALS</h1>
+      <h1 style="padding-top: 110px;" >NEW ARRIVALS</h1>
       <br />
       <div class="row" style="margin-top: 3rem" v-if="products">
 
@@ -15,18 +15,22 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav mx-auto">
-              <button @click="filterByProductIds([4, 8, 3])">Oil Paintings</button>
-              <button @click="filterByProductIds([2, 6])">Renaissance Paintings</button>
+              <button @click="filterByProductIds([5, 6, 10, 11, 12, 16 , 18, 19, 24 , 27, 29])" class="btn btn-secondary">Oil Paintings</button>
+              <button @click="filterByProductIds([4, 7, 13 ,14, 15, 20, 21, 22, 23 ,25,, 30])" class="btn btn-secondary">Renaissance Paintings</button>
             </div>
           </div>
         </div>
       </nav>
-      <button style="width:5rem" @click="sortByName">Sort Name</button>
-      <button  style="width:5rem" @click="sortByPrice">Sort price</button>
-      <input type="text" v-model="searchQuery" placeholder="Search...">
-      <button @click="searchProducts">Search</button>
+      <button style="width:5rem" @click="sortByName" class="btn btn-secondary">Sort Name</button>
+      <button  style="width:5rem " @click="sortByPrice" class="btn btn-secondary">Sort price</button>
+      <br>
+      <br>
+      <h5>SEARCH</h5>
+      <input type="text" v-model="searchQuery" placeholder="Search..." style="margin-bottom: 5rem;">
+      <br>
+      <!-- <button @click="searchProducts" class="btn btn-secondary">Search</button> -->
 
-      <div class="dropdown">
+      <!-- <div class="dropdown">
         <button
           class="btn btn-secondary dropdown-toggle"
           style=" background-color: rgb(37, 37, 139)"
@@ -61,7 +65,7 @@
           </div>
         </div>
       </div>
-     
+      -->
       
         <div
           class="car col-12 col-sm-6 col-md-4 p-2"
@@ -90,7 +94,7 @@
                 View More
               </button></router-link
             >
-            <button @click="addToCart(product)" class="btn bg-black">Buy Now</button>
+            <button @click="addToCart(product)" class="btn bg-black text-white">Buy Now</button>
           </div>
         </div>
       </div>
@@ -172,11 +176,11 @@ export default {
     this.$store.commit('setSelectedCategory', category);
   },
   filterByProductIds(ids) {
-      // Filter products by the provided IDs
-      this.$store.commit('setSelectedCategory', null); // Clear the selected category filter
-      const filteredProducts = this.products.filter(product => ids.includes(product.id));
-      this.$store.commit('setProducts', filteredProducts); // Update the products in the store
-    },
+  // Filter products by the provided IDs
+  this.$store.commit('setSelectedCategory', null); // Clear the selected category filter
+  const filteredProducts = this.products.filter(product => ids.includes(product.prodID));
+  this.$store.commit('setProducts', filteredProducts); // Update the products in the store
+},
   },
   mounted() {
     this.$store.dispatch('fetchProducts');
@@ -213,5 +217,65 @@ h1 {
   text-align: center;
   justify-content: center;
   align-items: center;
+}
+.btn{
+  background-color: rgb(10, 10, 11);
+  margin: 1rem;
+}
+@media (max-width: 600px) {
+  /* Adjust styles for screens with a width less than or equal to 600px */
+  .paint {
+    width: 25rem !important;
+    height: 30rem !important;
+  }
+}
+
+@media (max-width: 450px) {
+  /* Adjust styles for screens with a width less than or equal to 450px */
+  .paint {
+    width: 20rem !important;
+    height: 25rem !important;
+  }
+}
+
+@media (max-width: 350px) {
+  /* Adjust styles for screens with a width less than or equal to 350px */
+  .paint {
+    width: 15rem !important;
+    height: 20rem !important;
+  }
+}
+@media (max-width: 300px) and (max-height: 700px) {
+  /* Adjust styles for screens with a width less than or equal to 300px and height less than or equal to 700px */
+  .paint {
+    width: 15rem !important;
+    height: 20rem !important;
+  }
+  
+  .search-input {
+    width: 80%; /* Adjust the width of the search input */
+    margin: 0 auto; /* Center the search input */
+  }
+  
+  .row {
+    margin-top: 1rem; /* Adjust the top margin of the row */
+  }
+}
+@media (max-width: 300px) and (max-height: 700px) {
+  /* Apply specific styles for screens with a resolution of 300x700 */
+  
+  /* Center the buttons */
+  .btn {
+    margin: 0 auto;
+    width: 50%; /* Adjust the button width as needed */
+  }
+  
+  /* Adjust the search input */
+  .search-input {
+    width: 70%; /* Adjust the width of the search input */
+    margin: 0 auto; /* Center the search input */
+  }
+  
+  /* Optionally, you can adjust other styles as needed for this screen size */
 }
 </style>

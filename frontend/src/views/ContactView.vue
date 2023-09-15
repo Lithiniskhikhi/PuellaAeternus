@@ -1,12 +1,12 @@
 <template>
-    <div class="admin">
+    <div class="admin" >
         <br>
         <br>
-        <div  style="margin-inline:10rem">
-            <form action="https://formspree.io/f/meqbglnp" method="POST">
-                <h1>CONTACT US</h1>
+        <div  >
+            <form action="https://formspree.io/f/meqbglnp" method="POST" >
+                <h1 style="padding-top: 95px;">CONTACT US</h1>
                 <br>
-                <div class="mb-3">
+                <div class="mb-3" >
                   <label for="exampleInputEmail1" class="form-label"><h3>Email address:</h3></label>
                   <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="p-4 w-75 text-center border-5 rounded-4 fs-5 border-radius:2px solid black;"
                   placeholder="Enter Email"
@@ -53,7 +53,7 @@ export default {
   }
 
   h3{
-    color: white; 
+    color: rgb(246, 242, 242); 
     font-family: 'Phudu', cursive;
 
   }
@@ -62,7 +62,7 @@ export default {
     margin: 0;
     margin-left: 20px ;
     font-family: 'Phudu', cursive;
-  color: rgb(250, 245, 245);
+  color: rgb(251, 249, 249);
   }
 </style>
     
