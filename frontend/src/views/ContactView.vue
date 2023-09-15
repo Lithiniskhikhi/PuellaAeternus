@@ -53,7 +53,7 @@ export default {
   }
 
   h3{
-    color: rgb(246, 242, 242); 
+    color: rgb(9, 9, 9); 
     font-family: 'Phudu', cursive;
 
   }
@@ -62,7 +62,7 @@ export default {
     margin: 0;
     margin-left: 20px ;
     font-family: 'Phudu', cursive;
-  color: rgb(251, 249, 249);
+  color: rgb(3, 3, 3);
   }
 </style>
     

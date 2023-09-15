@@ -22,7 +22,7 @@
                 <router-link class="nav-link" to="/Products" style="color:#000">PRODUCTS</router-link>
               </li>
               <li class="nav-item">
-                <router-link class="nav-link" to="/admin" style="color:#000" v-show="isAdmin" >ADMIN</router-link>
+                <router-link class="nav-link" to="/admin" style="color:#000"  >ADMIN</router-link>
               </li>
               <li class="nav-item">
                 <router-link class="nav-link" to="/contact" style="color:#000">CONTACT</router-link>
@@ -53,14 +53,7 @@
 </template>
 
 <script>
- export default {
 
-computed:{
-  isAdmin() {
-          return this.result?.userRole?.toLowerCase() === "admin"
-        },
-    },
-  } 
 </script>
 
 <style scoped>
