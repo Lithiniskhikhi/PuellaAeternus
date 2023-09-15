@@ -90,7 +90,14 @@ cart:[],
     setSelectedCategory(state, category) {
       state.selectedCategory = category;
     },
-
+    editUserById(state, updatedUserData) {
+      // Implement the logic to update the user's data in the state.users array
+      const userIndex = state.users.findIndex(user => user.id === updatedUserData.id);
+      if (userIndex !== -1) {
+        // Update the user's data with the new data
+        state.users[userIndex] = { ...state.users[userIndex], ...updatedUserData };
+      }
+    },
 
   },
   actions: {
@@ -179,18 +186,18 @@ cart:[],
     //     console.log(error);
     //   }
     // },
-    async addProduct({ commit }, productData) {
-      try {
-        const response = await axios.post(`${artUrl}products`, productData);
-        // Handle success, e.g., commit the mutation or take any other actions
-        commit('setAddProduct', response.data);
-        // Reload your data or take other necessary actions
-        location.reload();
-      } catch (error) {
-        // Handle the error here, e.g., display an error message
-        console.error('An error occurred:', error);
-      }
-    },
+    // async addProduct({ commit }, productData) {
+    //   try {
+    //     const response = await axios.post(`${artUrl}products`, productData);
+    //     // Handle success, e.g., commit the mutation or take any other actions
+    //     commit('setAddProduct', response.data);
+    //     // Reload your data or take other necessary actions
+    //     location.reload();
+    //   } catch (error) {
+    //     // Handle the error here, e.g., display an error message
+    //     console.error('An error occurred:', error);
+    //   }
+    // },
     // async fetchOil(context) {
     //   try{
     //     const {data} = await axios.get(`${artUrl}Oil painting`)
@@ -221,11 +228,11 @@ cart:[],
 
 
 
-    // async addProduct({ commit }, productData) {
-    //   const response = await axios.post(`${artUrl}products`, productData)
-    //   location.reload()
-    //   commit('setAddProduct', response.data)
-    // },
+    async addProduct({ commit }, productData) {
+      const response = await axios.post(`${artUrl}products`, productData)
+      location.reload()
+      commit('setAddProduct', response.data)
+    },
     async addUser({ commit }, userData) {
       try {
         const response = await axios.post(`${artUrl}users`, userData)

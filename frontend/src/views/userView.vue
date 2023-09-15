@@ -30,19 +30,19 @@
             <!-- <span><strong>Password: </strong>{{ $store.state.user?.userPass }}</span> -->
           </div>
           <div class="d-flex justify-content-between">
-            <update-user-comp class="btn edit-btn" />
-            <button
-              type="submit"
-              class="btn del-btn"
-              @click="deleteUser(user.userID)"
-            >
-              Delete Account
-            </button>
+            
+            
             <button @click="Logout" type="submit">log out</button>
+             <div>
+      <!-- <button @click="editUser">Edit User</button>
+      <button @click="confirmDeleteUser">Delete User</button> -->
+    </div>
           </div>
         </div>
       </div>
+     
     </div>
+  
   </div>
 
   <!-- <div>
@@ -123,6 +123,8 @@
     </div>
 </div>
     </div> -->
+   
+     
 </template>
 
 <script>
